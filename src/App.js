@@ -36,65 +36,69 @@ export default function App() {
   // meme.length ?
   return (
     <div className="main">
-      <div className="show-imag">
-        <img
-          data-test-id="meme-image"
-          src={!topText && !bottomText ? urlBlank : url}
-          alt="meme"
-          style={{ height: 260, with: 400 }}
-        />
-      </div>
+      <h1>Meme Generator</h1>
+      <div className="display">
+        <div className="image-display">
+          <img
+            data-test-id="meme-image"
+            src={!topText && !bottomText ? urlBlank : url}
+            alt="meme"
+          />
+        </div>
+        <div className="input-display">
+          <div className="memeId">
+            <label htmlFor="meme-id">Meme tamplate</label>
+            <div>
+              <input
+                id="meme-id"
+                placeholder="Search for template"
+                value={memeId}
+                onChange={(event) => {
+                  setMemeId(event.currentTarget.value);
+                }}
+              />{' '}
+            </div>
+          </div>
+          <div className="top-text">
+            <label htmlFor="top-text">Top text</label>
+            <div>
+              {' '}
+              <input
+                id="top-text"
+                placeholder="Top text"
+                value={topText}
+                onChange={(event) => {
+                  setTopText(event.currentTarget.value);
+                  console.log(event.currentTarget.value);
+                }}
+              />{' '}
+            </div>
+          </div>
+          <div className="bottom-text">
+            <label htmlFor="bottom-text">Bottom text</label>
+            <div>
+              <input
+                placeholder="Bottom text"
+                id="bottom-text"
+                value={bottomText}
+                onChange={(event) => {
+                  setBottomText(event.currentTarget.value);
+                }}
+              />{' '}
+            </div>
+          </div>
+          <div className="btn-display">
+            <button className="download-btn" onClick={getMemeWithText}>
+              Download
+            </button>
 
-      <div className="top-text">
-        <label htmlFor="top-text">Top text</label>
-        <div>
-          {' '}
-          <input
-            id="top-text"
-            placeholder="Top text"
-            value={topText}
-            onChange={(event) => {
-              setTopText(event.currentTarget.value);
-              console.log(event.currentTarget.value);
-            }}
-          />{' '}
+            <button className="reset-btn">Reset</button>
+          </div>
         </div>
-      </div>
-      <div className="bottom-text">
-        <label htmlFor="bottom-text">Bottom text</label>
-        <div>
-          <input
-            placeholder="Bottom text"
-            id="bottom-text"
-            value={bottomText}
-            onChange={(event) => {
-              setBottomText(event.currentTarget.value);
-            }}
-          />{' '}
-        </div>
-      </div>
-      <div className="memeId">
-        <label htmlFor="meme-id">Meme tamplate</label>
-        <div>
-          <input
-            id="meme-id"
-            placeholder="Search for template"
-            value={memeId}
-            onChange={(event) => {
-              setMemeId(event.currentTarget.value);
-            }}
-          />{' '}
-        </div>
-      </div>
 
-      <br />
-      <br />
-      <button onClick={getMemeWithText}>Download</button>
+        <br />
+        <br />
+      </div>
     </div>
-  ); /*: (
-    <div>
-      {' '}
-      <h2> Too slow!</h2>
-    </div>
-  ); */
+  );
 }
