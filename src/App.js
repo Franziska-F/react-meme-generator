@@ -2,6 +2,8 @@ import './App.css';
 
 import { useState } from 'react';
 
+import { saveAs } from 'file-saver';
+
 export default function App() {
   // let apiUrl =
 
@@ -9,15 +11,13 @@ export default function App() {
 
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
-  const [memeId, setMemeId] = useState('aag');
+  const [memeId, setMemeId] = useState('feelsgood');
   const url = `https://api.memegen.link/images/${memeId}/${topText}/${bottomText}.png`;
 
   const urlBlank = `https://api.memegen.link/images/${memeId}.png`;
 
-  async function getMemeWithText() {
-    const loadImages = await fetch(url);
-    const arrayBuffer = await loadImages.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
+  function getMemeWithText() {
+    saveAs(url, 'meme.png');
   }
 
   /* useEffect(() => {
@@ -92,7 +92,15 @@ export default function App() {
               Download
             </button>
 
-            <button className="reset-btn">Reset</button>
+            <button
+              className="reset-btn"
+              onClick={() => {
+                setBottomText('');
+                setTopText('');
+              }}
+            >
+              Reset
+            </button>
           </div>
         </div>
 
