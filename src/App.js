@@ -47,12 +47,11 @@ export default function App() {
         </div>
         <div className="input-display">
           <div className="memeId">
-            <label htmlFor="meme-id">Meme tamplate</label>
+            <label htmlFor="meme-id">Meme template</label>
             <div>
               <input
                 id="meme-id"
                 placeholder="Search for template"
-                value={memeId}
                 onChange={(event) => {
                   setMemeId(event.currentTarget.value);
                 }}
